@@ -1,20 +1,20 @@
-#CN333 ASSIGNMENT 1 : GUESSING NUMBER
+# CN333 ASSIGNMENT 1 : GUESSING NUMBER
 
-##NAME : SITTICHOK NGAMPIPHATCHOKCHAI
+## NAME : SITTICHOK NGAMPIPHATCHOKCHAI
 
-##ID : 6210612815
+## ID : 6210612815
 
-##APPLICATION FUNCTIONALITIES
+## APPLICATION FUNCTIONALITIES
 
-    ###-Hint the number is higher or lower
+    ### -Hint the number is higher or lower
     
-    ###-Reset game button
+    ### -Reset game button
     
-    ###-Counting Score
+    ### -Counting Score
     
-    ###-Counting wrong guess
+    ### -Counting wrong guess
     
-    ###-User can guess number by type the number in box
+    ### -User can guess number by type the number in box
     
-##DEMO CLIP : 
+## DEMO CLIP : 
     
