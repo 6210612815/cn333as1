@@ -84,7 +84,7 @@
         android:layout_height="46dp"
         android:layout_margin="16dp"
         android:layout_marginBottom="136dp"
-        android:hint="Input"
+        android:hint="Guess The Number"
         android:inputType="text"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/textView3"

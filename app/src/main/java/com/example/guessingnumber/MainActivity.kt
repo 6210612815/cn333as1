@@ -10,15 +10,15 @@ import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var textView1 : TextView
-    lateinit var textView2 : TextView
-    lateinit var textView3 : TextView
-    lateinit var textView4 : TextView
-    lateinit var editText: EditText
-    lateinit var imageButton1: ImageButton
-    lateinit var button: Button
-    var count = 0
-    var point = 0
+    private lateinit var textView1 : TextView
+    private lateinit var textView2 : TextView
+    private lateinit var textView3 : TextView
+    private lateinit var textView4 : TextView
+    private lateinit var editText: EditText
+    private lateinit var imageButton1: ImageButton
+    private lateinit var button: Button
+    private var count = 0
+    private var point = 0
 
     var random: Int = nextInt(1,1000)
 
@@ -35,28 +35,32 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.button)
 
         textView1.text = "Try to guess the number I'm thinking of from 1-1000!"
-        textView3.text = "Point: $point"
-        textView4.text = "Count: $count"
+        textView3.text = "Point: 0"
+        textView4.text = "Wrong: 0"
 
         imageButton1.setOnClickListener {
             val number: Int = editText.text.toString().toInt()
 
             when {
                 number < random -> {
-                    textView2.text = "HINT:It's Lower!!"
-                    editText.text.clear()
                     count += 1
+                    textView2.text = "HINT:It's Lower!!"
+                    textView3.text = "Point: $point"
+                    textView4.text = "Wrong: $count"
+                    editText.text.clear()
                 }
                 number > random -> {
-                    textView2.text = "HINT:It's Higher!!"
-                    editText.text.clear()
                     count += 1
+                    textView2.text = "HINT:It's Higher!!"
+                    textView3.text = "Point: $point"
+                    textView4.text = "Wrong: $count"
+                    editText.text.clear()
                 }
                 else -> {
                     point += 1
                     textView2.text = "It's Correct!!"
                     textView3.text = "Point: $point"
-                    textView4.text = "Count: $count"
+                    textView4.text = "Wrong: $count"
                     editText.text.clear()
                     nextStage()
                 }
@@ -71,7 +75,6 @@ class MainActivity : AppCompatActivity() {
     fun nextStage() {
         random = nextInt(1,1000)
         editText.text.clear()
-        count = 0
     }
 
     fun reset() {
@@ -79,8 +82,8 @@ class MainActivity : AppCompatActivity() {
         point = 0
         count = 0
         textView2.text = ""
-        textView3.text = ""
-        textView4.text = ""
+        textView3.text = "Point: 0"
+        textView4.text = "Wrong: 0"
         editText.text.clear()
     }
 }
