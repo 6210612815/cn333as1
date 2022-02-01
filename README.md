@@ -6,15 +6,15 @@
 
 ## APPLICATION FUNCTIONALITIES
 
-     -Hint the number is higher or lower
+     - Hint the number is higher or lower
     
-     -Reset game button
+     - Reset game button
     
-     -Counting Score
+     - Counting Score
     
-     -Counting wrong guess
+     - Counting wrong guess
     
-     -User can guess number by type the number in box
+     - User can guess number by type the number in box
     
 ## DEMO CLIP : 
     
