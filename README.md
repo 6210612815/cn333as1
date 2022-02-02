@@ -15,6 +15,8 @@
      - Counting wrong guess
     
      - User can guess number by type the number in box
+     
+     - If user type input that not integer it will be warning message 
     
 ## DEMO CLIP : https://youtu.be/COy5mgfiiCU
     
