@@ -2,10 +2,7 @@ package com.example.guessingnumber
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +14,25 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var imageButton1: ImageButton
     private lateinit var button: Button
-    private var count = 0
+    private var wrong = 0
     private var point = 0
 
     var random: Int = nextInt(1,1000)
+
+    fun nextStage() {
+        random = nextInt(1,1000)
+        editText.text.clear()
+    }
+
+    fun reset() {
+        random = nextInt(1,1000)
+        point = 0
+        wrong = 0
+        textView2.text = ""
+        textView3.text = "Point: 0"
+        textView4.text = "Wrong: 0"
+        editText.text.clear()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,51 +51,46 @@ class MainActivity : AppCompatActivity() {
         textView4.text = "Wrong: 0"
 
         imageButton1.setOnClickListener {
-            val number: Int = editText.text.toString().toInt()
+            val number: Int? = editText.text.toString().toIntOrNull()
 
-            when {
-                number < random -> {
-                    count += 1
-                    textView2.text = "HINT:It's Lower!!"
-                    textView3.text = "Point: $point"
-                    textView4.text = "Wrong: $count"
-                    editText.text.clear()
-                }
-                number > random -> {
-                    count += 1
-                    textView2.text = "HINT:It's Higher!!"
-                    textView3.text = "Point: $point"
-                    textView4.text = "Wrong: $count"
-                    editText.text.clear()
-                }
-                else -> {
-                    point += 1
-                    textView2.text = "It's Correct!!"
-                    textView3.text = "Point: $point"
-                    textView4.text = "Wrong: $count"
-                    editText.text.clear()
-                    nextStage()
+            if(number is Int) {
+                when {
+                    number < random -> {
+                        wrong += 1
+                        textView2.text = "HINT:It's Lower!!"
+                        textView3.text = "Point: $point"
+                        textView4.text = "Wrong: $wrong"
+                        editText.text.clear()
+                    }
+                    number > random -> {
+                        wrong += 1
+                        textView2.text = "HINT:It's Higher!!"
+                        textView3.text = "Point: $point"
+                        textView4.text = "Wrong: $wrong"
+                        editText.text.clear()
+                    }
+                    else -> {
+                        point += 1
+                        textView2.text = "It's Correct!!"
+                        textView3.text = "Point: $point"
+                        textView4.text = "Wrong: $wrong"
+                        editText.text.clear()
+                        nextStage()
+                    }
                 }
             }
+            else {
+                wrong += 1
+                Toast.makeText(this, "Please type a number!", Toast.LENGTH_SHORT).show()
+                textView3.text = "Point: $point"
+                textView4.text = "Wrong: $wrong"
+                editText.text.clear()
+            }
+
         }
 
         button.setOnClickListener {
             reset()
         }
-    }
-
-    fun nextStage() {
-        random = nextInt(1,1000)
-        editText.text.clear()
-    }
-
-    fun reset() {
-        random = nextInt(1,1000)
-        point = 0
-        count = 0
-        textView2.text = ""
-        textView3.text = "Point: 0"
-        textView4.text = "Wrong: 0"
-        editText.text.clear()
     }
 }
